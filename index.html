@@ -8,42 +8,55 @@
 <body>
   <header>
     <h1>Fabrication Calculator</h1>
-    <p>Project Estimation Tool</p>
+    <p class="subtitle">Project Estimation Tool</p>
   </header>
 
-  <!-- Section 1: User Input -->
-  <section id="input">
-    <h2>User Input</h2>
-    <form id="calcForm">
-      <label>Project Name: <input type="text" id="projectName"></label><br>
-      <label>Customer Name: <input type="text" id="customerName"></label><br>
-      <label>Length (mm): <input type="number" id="length"></label><br>
-      <label>Width (mm): <input type="number" id="width"></label><br>
-      <label>Height (mm): <input type="number" id="height"></label><br>
-      <label>Thickness (mm): <input type="number" id="thickness"></label><br>
-      <label>Type of Panel:
-        <select id="panelType">
-          <option value="single">Single Door</option>
-          <option value="twin">Twin Door</option>
-          <option value="double">Double Door</option>
-        </select>
-      </label><br>
-      <button type="button" onclick="calculate()">Calculate</button>
-    </form>
-  </section>
+  <main class="grid-container">
+    <!-- Section 1: User Input -->
+    <section id="input" class="card">
+      <h2>User Input</h2>
+      <form id="calcForm">
+        <div class="form-grid">
+          <label>Project Name <input type="text" id="projectName"></label>
+          <label>Customer Name <input type="text" id="customerName"></label>
+          <label>Length (mm) <input type="number" id="length"></label>
+          <label>Width (mm) <input type="number" id="width"></label>
+          <label>Height (mm) <input type="number" id="height"></label>
+          <label>Thickness (mm) <input type="number" id="thickness"></label>
+          <label>Type of Panel
+            <select id="panelType">
+              <option value="single">Single Door</option>
+              <option value="twin">Twin Door</option>
+              <option value="double">Double Door</option>
+            </select>
+          </label>
+        </div>
+        <button type="button" onclick="calculate()">Calculate</button>
+      </form>
+    </section>
 
-  <!-- Section 2: Results -->
-  <section id="results">
-    <h2>Results</h2>
-    <p id="output">Enter values and click Calculate.</p>
-  </section>
+    <!-- Section 2: Results -->
+    <section id="results" class="card">
+      <h2>Results</h2>
+      <div class="results-box">
+        <p id="output">Enter values and click Calculate.</p>
+      </div>
+    </section>
 
-  <!-- Section 3: Detailed Description -->
-  <section id="description">
-    <h2>Detailed Description</h2>
-    <p>This tool helps estimate fabrication area and weight based on dimensions and material thickness. 
-       You can extend it to include cost calculations, multiple panels, and more.</p>
-  </section>
+    <!-- Section 3: Detailed Description -->
+    <section id="description" class="card">
+      <h2>Detailed Description</h2>
+      <p>
+        This tool estimates fabrication area and weight based on dimensions and material thickness. 
+        Results are displayed instantly after calculation. You can extend this section with tables, 
+        diagrams, or cost breakdowns to match your engineering workflow.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Saikiran Test Project</p>
+  </footer>
 
   <script>
     function calculate() {
@@ -53,19 +66,19 @@
       const thickness = parseFloat(document.getElementById('thickness').value);
 
       if (isNaN(length) || isNaN(width) || isNaN(height) || isNaN(thickness)) {
-        document.getElementById('output').innerText = "Please enter all values.";
+        document.getElementById('output').innerText = "⚠️ Please enter all values.";
         return;
       }
 
-      // Example calculation: surface area of a box (approx)
-      const area = 2 * (length*width + length*height + width*height) / 92903.04; // convert mm² to sq.ft
-      const weight = area * thickness * 7.85; // rough steel density factor
+      // Example calculation: surface area of a box (mm² → sq.ft)
+      const area = 2 * (length*width + length*height + width*height) / 92903.04;
+      const weight = area * thickness * 7.85; // steel density approx
 
       document.getElementById('output').innerText =
-        `Project: ${document.getElementById('projectName').value}\n` +
-        `Customer: ${document.getElementById('customerName').value}\n` +
-        `Total Area: ${area.toFixed(2)} sq.ft\n` +
-        `Estimated Weight: ${weight.toFixed(2)} kg`;
+        `📌 Project: ${document.getElementById('projectName').value}\n` +
+        `👤 Customer: ${document.getElementById('customerName').value}\n` +
+        `📐 Total Area: ${area.toFixed(2)} sq.ft\n` +
+        `⚖️ Estimated Weight: ${weight.toFixed(2)} kg`;
     }
   </script>
 </body>
