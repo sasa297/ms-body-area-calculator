@@ -1,3 +1,14 @@
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background: #f4f6f9;
+  color: #333;
+}
+
+/* Block Styling */
 .block {
   max-width: 900px;
   margin: 20px auto;
@@ -7,12 +18,13 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-.project-info h1 {
+/* Header */
+#project-header h1 {
   margin-bottom: 10px;
   color: #004080;
 }
 
-.project-info p {
+#project-header p {
   margin: 5px 0;
   font-size: 16px;
 }
@@ -33,4 +45,39 @@
 
 .project-actions button:hover {
   background: #0066cc;
+}
+
+/* Results Section */
+#results h2 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th {
+  background: #004080;
+  color: #fff;
+}
+
+th, td {
+  padding: 8px;
+  text-align: center;
+}
+
+/* Footer */
+footer {
+  background: #004080;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
 }
