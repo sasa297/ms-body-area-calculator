@@ -1,120 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MS Calculator</title>
-
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#f5f7fa;
-}
-
-/* main container */
-.container{
-    width:1400px;
-    margin:30px auto;
-}
-
-/* block card */
-.card{
-    background:#ffffff;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.08);
-}
-
-/* title */
-.card h2{
-    margin:0 0 20px 0;
-    font-size:20px;
-    color:#333;
-    border-left:4px solid #2b6cb0;
-    padding-left:10px;
-}
-
-/* input grid */
-.grid{
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:20px;
-}
-
-/* input group */
-.field{
-    display:flex;
-    flex-direction:column;
-}
-
-label{
-    font-size:13px;
-    color:#555;
-    margin-bottom:6px;
-}
-
-input{
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:14px;
-    outline:none;
-}
-
-input:focus{
-    border-color:#2b6cb0;
-    box-shadow:0 0 4px rgba(43,108,176,0.3);
-}
-
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saikiran Test Project</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header>
+    <h1>Saikiran Test Project</h1>
+    <p>Fabrication calculator for enclosure design</p>
+  </header>
 
-<div class="container">
+  <section id="overview">
+    <h2>Overview</h2>
+    <p>This tool helps estimate <strong>overall weight</strong> and <strong>fabrication cost</strong> based on dimensions and material thickness.</p>
+  </section>
 
-    <!-- BLOCK 1 -->
-    <div class="card">
-        <h2>INPUT PARAMETERS</h2>
+  <section id="features">
+    <h2>Features</h2>
+    <ul>
+      <li>Input dimensions (L × W × H)</li>
+      <li>Single/Twin/Double door options</li>
+      <li>Auto-calculated area and weight</li>
+      <li>Fabrication rate and cost estimation</li>
+    </ul>
+  </section>
 
-        <div class="grid">
+  <section id="example">
+    <h2>Example Calculation</h2>
+    <p>Dimensions: 1100 × 550 × 350 mm<br>
+       Thickness: 1.5 mm<br>
+       Total Area: 44.05 sq.ft<br>
+       Total Weight: 24.48 kg</p>
+  </section>
 
-            <div class="field">
-                <label>Length (mm)</label>
-                <input type="number" placeholder="Enter Length">
-            </div>
+  <section id="table">
+    <h2>Component Breakdown</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th><th>Category</th><th>L (mm)</th><th>W (mm)</th><th>Thick (mm)</th><th>Area (sq.ft)</th><th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Door</td><td>600</td><td>600</td><td>1.5</td><td>10.33</td><td>5.65</td></tr>
+        <tr><td>2</td><td>Gland Plate</td><td>600</td><td>150</td><td>1.5</td><td>1.94</td><td>1.41</td></tr>
+        <tr><td>3</td><td>Middle Plate</td><td>600</td><td>300</td><td>1.5</td><td>10.33</td><td>5.65</td></tr>
+        <tr><td>4</td><td>Body Left</td><td>600</td><td>600</td><td>1.5</td><td>10.33</td><td>5.65</td></tr>
+        <tr><td>5</td><td>Body Right</td><td>600</td><td>600</td><td>1.5</td><td>1.94</td><td>1.06</td></tr>
+        <tr><td>6</td><td>Body Back</td><td>800</td><td>150</td><td>1.5</td><td>2.58</td><td>1.41</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-            <div class="field">
-                <label>Width (mm)</label>
-                <input type="number" placeholder="Enter Width">
-            </div>
-
-            <div class="field">
-                <label>Height (mm)</label>
-                <input type="number" placeholder="Enter Height">
-            </div>
-
-            <div class="field">
-                <label>Depth (mm)</label>
-                <input type="number" placeholder="Enter Depth">
-            </div>
-
-            <div class="field">
-                <label>Thickness (mm)</label>
-                <input type="number" placeholder="Enter Thickness">
-            </div>
-
-            <div class="field">
-                <label>Quantity</label>
-                <input type="number" placeholder="Enter Quantity">
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
+  <footer>
+    <p>© 2026 Saikiran Test Project | MIT License</p>
+  </footer>
 </body>
 </html>
