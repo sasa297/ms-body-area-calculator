@@ -1,83 +1,41 @@
-/* General Page Styling */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-  background: #f4f6f9;
+  margin: 20px;
+  background: #f9f9f9;
   color: #333;
 }
 
-/* Block Styling */
-.block {
-  max-width: 900px;
-  margin: 20px auto;
-  padding: 20px;
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+section {
   background: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Header */
-#project-header h1 {
-  margin-bottom: 10px;
-  color: #004080;
+h2 {
+  color: #0066cc;
 }
 
-#project-header p {
-  margin: 5px 0;
-  font-size: 16px;
+label {
+  display: block;
+  margin: 8px 0;
 }
 
-.project-actions {
-  margin-top: 15px;
-}
-
-.project-actions button {
-  background: #004080;
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #0066cc;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
 }
-
-.project-actions button:hover {
-  background: #0066cc;
-}
-
-/* Results Section */
-#results h2 {
-  color: #004080;
-  margin-bottom: 10px;
-}
-
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-table, th, td {
-  border: 1px solid #ccc;
-}
-
-th {
-  background: #004080;
-  color: #fff;
-}
-
-th, td {
-  padding: 8px;
-  text-align: center;
-}
-
-/* Footer */
-footer {
-  background: #004080;
-  color: #fff;
-  text-align: center;
-  padding: 10px;
+button:hover {
+  background: #004999;
 }
