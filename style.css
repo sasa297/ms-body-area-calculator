@@ -1,23 +1,8 @@
-/* General Layout */
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   background: #eef2f7;
   color: #333;
-}
-
-header {
-  background: #0066cc;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-}
-header h1 {
-  margin: 0;
-}
-.subtitle {
-  font-size: 1.1em;
-  opacity: 0.9;
 }
 
 .grid-container {
@@ -31,7 +16,6 @@ header h1 {
 #results { grid-column: 2; grid-row: 1; }
 #description { grid-column: 1 / span 2; grid-row: 2; }
 
-/* Card Styling */
 .card {
   background: #fff;
   padding: 20px;
@@ -39,12 +23,25 @@ header h1 {
   box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
-/* Form Grid */
-.form-grid {
+/* Block styling */
+.block {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+}
+
 label {
   display: flex;
   flex-direction: column;
@@ -55,6 +52,13 @@ input, select {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 6px;
+}
+
+.note {
+  grid-column: 1 / -1;
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 5px;
 }
 
 /* Button */
@@ -79,13 +83,4 @@ button:hover {
   border-radius: 8px;
   font-family: monospace;
   white-space: pre-line;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 15px;
-  background: #0066cc;
-  color: #fff;
-  margin-top: 20px;
 }
