@@ -9,22 +9,42 @@
   <!-- Section 1: User Input -->
   <section id="input" class="block">
     <h2>Section 1: User Input</h2>
-    <form id="calcForm">
-      <label>Project Name <input type="text" id="projectName"></label>
-      <label>Customer Name <input type="text" id="customerName"></label>
-      <label>Length (mm) <input type="number" id="length"></label>
-      <label>Width (mm) <input type="number" id="width"></label>
-      <label>Height (mm) <input type="number" id="height"></label>
-      <label>Thickness (mm) <input type="number" id="thickness"></label>
-      <label>Type of Panel
-        <select id="panelType">
-          <option value="single">Single Door</option>
-          <option value="twin">Twin Door</option>
-          <option value="double">Double Door</option>
-        </select>
-      </label>
-      <button type="button" onclick="calculate()">Calculate</button>
+    <form id="calcForm" class="two-col">
+      
+      <!-- Column 1 -->
+      <div class="col">
+        <label>Project Name <input type="text" id="projectName"></label>
+        <label>Customer Name <input type="text" id="customerName"></label>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col">
+        <div class="sub-block grid-3">
+          <label>Length (mm) <input type="number" id="length"></label>
+          <label>Width (mm) <input type="number" id="width"></label>
+          <label>Height (mm) <input type="number" id="height"></label>
+        </div>
+        <div class="sub-block">
+          <label>Overall Thickness (mm) <input type="number" id="thickness"></label>
+          <p class="note">Derived from overall thickness (14 AWG)</p>
+        </div>
+        <div class="sub-block">
+          <label>Type of Panel
+            <select id="panelType">
+              <option value="single">Single Door</option>
+              <option value="twin">Twin Door</option>
+              <option value="double">Double Door</option>
+            </select>
+          </label>
+        </div>
+        <div class="sub-block grid-2">
+          <label>Gland Plate Size (mm) <input type="number" id="glandSize"></label>
+          <label>Gland Plate Thickness (mm) <input type="number" id="glandThickness"></label>
+          <p class="note">Derived from gland plate thickness (14 AWG)</p>
+        </div>
+      </div>
     </form>
+    <button type="button" onclick="calculate()">Calculate</button>
   </section>
 
   <!-- Section 2: Results -->
