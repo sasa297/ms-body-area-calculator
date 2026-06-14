@@ -1,90 +1,352 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MS Body Area Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f5f5f5;
-            margin:0;
-            padding:20px;
-        }
+<title>MS Enclosure Area & Weight Calculator</title>
 
-        .card{
-            max-width:500px;
-            margin:auto;
-            background:white;
-            padding:25px;
-            border-radius:10px;
-            box-shadow:0 0 10px rgba(0,0,0,0.1);
-        }
+<style>
 
-        h1{
-            text-align:center;
-        }
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f2f2;
+    margin:20px;
+}
 
-        label{
-            display:block;
-            margin-top:15px;
-        }
+.container{
+    max-width:1200px;
+    margin:auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0px 0px 10px rgba(0,0,0,0.15);
+}
 
-        input{
-            width:100%;
-            padding:10px;
-            box-sizing:border-box;
-        }
+h1{
+    text-align:center;
+}
 
-        button{
-            width:100%;
-            margin-top:20px;
-            padding:12px;
-            cursor:pointer;
-        }
+.section{
+    border:1px solid #ddd;
+    padding:15px;
+    margin-top:15px;
+    border-radius:8px;
+}
 
-        #result{
-            margin-top:20px;
-            font-size:20px;
-            font-weight:bold;
-            text-align:center;
-        }
-    </style>
+input{
+    padding:8px;
+    margin:5px;
+    width:120px;
+}
+
+button{
+    padding:12px 20px;
+    margin:10px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table, th, td{
+    border:1px solid #999;
+}
+
+th, td{
+    padding:8px;
+    text-align:center;
+}
+
+.total{
+    font-weight:bold;
+    background:#f0f0f0;
+}
+
+.red{
+    color:red;
+    font-weight:bold;
+}
+
+.blue{
+    color:blue;
+    font-weight:bold;
+}
+
+@media(max-width:768px){
+
+input{
+    width:90%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="container">
 
-<h1>MS Body Area Calculator</h1>
+<h1>MS Enclosure Area & Weight Calculator</h1>
 
-<label>Length (mm)</label>
-<input type="number" id="length">
+<div class="section">
 
-<label>Width (mm)</label>
-<input type="number" id="width">
+<label>Project Name</label><br>
+<input id="project" style="width:300px">
 
-<label>Height (mm)</label>
-<input type="number" id="height">
+<br>
+
+<label>Customer Name</label><br>
+<input id="customer" style="width:300px">
+
+</div>
+
+<div class="section">
+
+<h3>BODY</h3>
+
+Width (mm)
+<input type="number" id="bw" value="550">
+
+Height (mm)
+<input type="number" id="bh" value="1000">
+
+Depth (mm)
+<input type="number" id="bd" value="150">
+
+Thickness (mm)
+<input type="number" id="bt" value="1.5" step="0.1">
+
+</div>
+
+<div class="section">
+
+<h3>DOOR (Auto Derived)</h3>
+
+Width = Body Width
+
+<br>
+
+Height = Body Height
+
+<br><br>
+
+Door Thickness (mm)
+
+<input type="number" id="dt" value="1.5" step="0.1">
+
+</div>
+
+<div class="section">
+
+<h3>GLAND PLATE</h3>
+
+Width (mm)
+
+<input type="number" id="gw" value="550">
+
+Depth (mm)
+
+<input type="number" id="gd" value="150">
+
+Thickness (mm)
+
+<input type="number" id="gt" value="2" step="0.1">
+
+</div>
+
+<div class="section">
+
+<h3>MIDDLE PLATE</h3>
+
+Thickness (mm)
+
+<input type="number" id="mt" value="1.5" step="0.1">
+
+</div>
 
 <button onclick="calculate()">Calculate</button>
 
-<div id="result">Result will appear here</div>
+<button onclick="window.print()">Download / Print Report</button>
+
+<div id="timestamp"></div>
+
+<table id="resultTable">
+
+<thead>
+
+<tr>
+<th>#</th>
+<th>CAT</th>
+<th>L (mm)</th>
+<th>W (mm)</th>
+<th>Thick (mm)</th>
+<th>Area (sq.ft)</th>
+<th>Weight (kg)</th>
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
 
 </div>
 
 <script>
+
+const SQFT = 92903.04;
+const DENSITY = 7.85;
+
+function areaSqFt(mm2){
+    return mm2 / SQFT;
+}
+
+function weightKg(mm2, thickness){
+
+    let sqm = mm2 / 1000000;
+
+    return sqm * thickness * DENSITY;
+}
+
+function addRow(tbody,no,name,l,w,t,area,weight){
+
+    let row = `
+    <tr>
+    <td>${no}</td>
+    <td>${name}</td>
+    <td>${l}</td>
+    <td>${w}</td>
+    <td>${t}</td>
+    <td>${area.toFixed(3)}</td>
+    <td>${weight.toFixed(3)}</td>
+    </tr>
+    `;
+
+    tbody.innerHTML += row;
+}
+
 function calculate(){
 
-    let l = Number(document.getElementById("length").value);
-    let w = Number(document.getElementById("width").value);
-    let h = Number(document.getElementById("height").value);
+    let bw = Number(document.getElementById("bw").value);
+    let bh = Number(document.getElementById("bh").value);
+    let bd = Number(document.getElementById("bd").value);
+    let bt = Number(document.getElementById("bt").value);
 
-    let area = (l*w)/1000000;
+    let dt = Number(document.getElementById("dt").value);
 
-    document.getElementById("result").innerHTML =
-        area.toFixed(2) + " sq.m";
+    let gw = Number(document.getElementById("gw").value);
+    let gd = Number(document.getElementById("gd").value);
+    let gt = Number(document.getElementById("gt").value);
+
+    let mt = Number(document.getElementById("mt").value);
+
+    let tbody = document.querySelector("#resultTable tbody");
+
+    tbody.innerHTML = "";
+
+    let totalArea = 0;
+    let totalWeight = 0;
+
+    let rows = [
+
+        {
+            name:"Door",
+            l:bh,
+            w:bw,
+            t:dt
+        },
+
+        {
+            name:"Gland Plate",
+            l:gw,
+            w:gd,
+            t:gt
+        },
+
+        {
+            name:"Middle Plate",
+            l:bh,
+            w:bw,
+            t:mt
+        },
+
+        {
+            name:"Body Left",
+            l:bh,
+            w:bd,
+            t:bt
+        },
+
+        {
+            name:"Body Right",
+            l:bh,
+            w:bd,
+            t:bt
+        },
+
+        {
+            name:"Body Back",
+            l:bh,
+            w:bw,
+            t:bt
+        },
+
+        {
+            name:"Top Canopy",
+            l:bw,
+            w:bd,
+            t:bt
+        }
+
+    ];
+
+    rows.forEach((r,index)=>{
+
+        let mm2 = r.l * r.w;
+
+        let area = areaSqFt(mm2);
+
+        let weight = weightKg(mm2,r.t);
+
+        totalArea += area;
+        totalWeight += weight;
+
+        addRow(
+            tbody,
+            index+1,
+            r.name,
+            r.l,
+            r.w,
+            r.t,
+            area,
+            weight
+        );
+
+    });
+
+    tbody.innerHTML += `
+    <tr class="total">
+        <td colspan="5">TOTAL</td>
+        <td>${totalArea.toFixed(3)}</td>
+        <td>${totalWeight.toFixed(3)}</td>
+    </tr>
+    `;
+
+    let now = new Date();
+
+    document.getElementById("timestamp").innerHTML =
+        "<br><b>Generated On :</b> " +
+        now.toLocaleString();
+
 }
+
+calculate();
+
 </script>
 
 </body>
