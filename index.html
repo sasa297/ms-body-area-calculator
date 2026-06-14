@@ -1,54 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MS Calculator</title>
-  <link rel="stylesheet" href="style.css"/>
-</head>
+<section class="card" id="block1">
+  <h2>User Input</h2>
+  <form id="calcForm">
+    <div class="two-col-grid">
 
-<body>
-
-  <div class="page">
-
-    <!-- BLOCK 1: INPUTS -->
-    <section class="block block-inputs">
-
-      <div class="inputs-left">
-        <h3>Project Details</h3>
-
-        <label>Project Name</label>
-        <input type="text" placeholder="Enter project name"/>
-
-        <label>Customer Name</label>
-        <input type="text" placeholder="Enter customer name"/>
+      <!-- First Column -->
+      <div class="col">
+        <label>Project Name
+          <input type="text" id="projectName">
+        </label>
+        <label>Customer Name
+          <input type="text" id="customerName">
+        </label>
       </div>
 
-      <div class="inputs-right">
-        <h3>Dimensions</h3>
+      <!-- Second Column -->
+      <div class="col">
+        <!-- Line 1 -->
+        <div class="inline-inputs">
+          <input type="number" id="length" placeholder="Length">
+          <span>×</span>
+          <input type="number" id="width" placeholder="Width">
+          <span>×</span>
+          <input type="number" id="height" placeholder="Height">
+          <span>mm thick</span>
+          <input type="number" id="thickness1" placeholder="Thickness">
+        </div>
 
-        <label>Item 1</label>
-        <input type="text" placeholder="L × W × H (mm)"/>
-        <input type="number" placeholder="Thickness (mm)"/>
-
-        <label>Item 2</label>
-        <input type="text" placeholder="L × W × H (mm)"/>
-        <input type="number" placeholder="Thickness (mm)"/>
+        <!-- Line 2 -->
+        <div class="inline-inputs">
+          <input type="number" id="width2" placeholder="Width">
+          <span>×</span>
+          <input type="number" id="height2" placeholder="Height">
+          <span>mm thick</span>
+          <input type="number" id="thickness2" placeholder="Thickness">
+        </div>
       </div>
 
-    </section>
-
-    <!-- BLOCK 2 (placeholder for now) -->
-    <section class="block block-results">
-      <h3>Results</h3>
-    </section>
-
-    <!-- BLOCK 3 (placeholder for now) -->
-    <section class="block block-summary">
-      <h3>Summary</h3>
-    </section>
-
-  </div>
-
-</body>
-</html>
+    </div>
+    <button type="button" onclick="calculate()">Calculate</button>
+  </form>
+</section>
