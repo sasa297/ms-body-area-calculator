@@ -1,52 +1,30 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f6f8;
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
 }
 
-/* Full screen fixed layout */
-.page {
-  height: 100vh;
+.col {
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* prevents scrolling */
+  gap: 15px;
 }
 
-/* Each block takes equal space for now */
-.block {
-  flex: 1;
-  padding: 10px;
-  box-sizing: border-box;
-  border-bottom: 1px solid #ddd;
-}
-
-/* BLOCK 1 layout */
-.block-inputs {
+.inline-inputs {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
-/* Two columns inside block 1 */
-.inputs-left,
-.inputs-right {
-  flex: 1;
-  background: white;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-/* Inputs styling */
-label {
-  display: block;
-  margin-top: 10px;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-input {
-  width: 100%;
+.inline-inputs input {
+  width: 70px;
   padding: 6px;
-  margin-top: 4px;
-  margin-bottom: 8px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.inline-inputs span {
+  font-weight: bold;
+  color: #444;
 }
