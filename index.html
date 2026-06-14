@@ -1,88 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fabrication Calculator</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MS Calculator</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
+
 <body>
-  <!-- Section 1: User Input -->
-  <section id="input" class="block">
-    <h2>Section 1: User Input</h2>
-    <form id="calcForm" class="two-col">
-      
-      <!-- Column 1 -->
-      <div class="col">
-        <label>Project Name <input type="text" id="projectName"></label>
-        <label>Customer Name <input type="text" id="customerName"></label>
+
+  <div class="page">
+
+    <!-- BLOCK 1: INPUTS -->
+    <section class="block block-inputs">
+
+      <div class="inputs-left">
+        <h3>Project Details</h3>
+
+        <label>Project Name</label>
+        <input type="text" placeholder="Enter project name"/>
+
+        <label>Customer Name</label>
+        <input type="text" placeholder="Enter customer name"/>
       </div>
 
-      <!-- Column 2 -->
-      <div class="col">
-        <div class="sub-block grid-3">
-          <label>Length (mm) <input type="number" id="length"></label>
-          <label>Width (mm) <input type="number" id="width"></label>
-          <label>Height (mm) <input type="number" id="height"></label>
-        </div>
-        <div class="sub-block">
-          <label>Overall Thickness (mm) <input type="number" id="thickness"></label>
-          <p class="note">Derived from overall thickness (14 AWG)</p>
-        </div>
-        <div class="sub-block">
-          <label>Type of Panel
-            <select id="panelType">
-              <option value="single">Single Door</option>
-              <option value="twin">Twin Door</option>
-              <option value="double">Double Door</option>
-            </select>
-          </label>
-        </div>
-        <div class="sub-block grid-2">
-          <label>Gland Plate Size (mm) <input type="number" id="glandSize"></label>
-          <label>Gland Plate Thickness (mm) <input type="number" id="glandThickness"></label>
-          <p class="note">Derived from gland plate thickness (14 AWG)</p>
-        </div>
+      <div class="inputs-right">
+        <h3>Dimensions</h3>
+
+        <label>Item 1</label>
+        <input type="text" placeholder="L × W × H (mm)"/>
+        <input type="number" placeholder="Thickness (mm)"/>
+
+        <label>Item 2</label>
+        <input type="text" placeholder="L × W × H (mm)"/>
+        <input type="number" placeholder="Thickness (mm)"/>
       </div>
-    </form>
-    <button type="button" onclick="calculate()">Calculate</button>
-  </section>
 
-  <!-- Section 2: Results -->
-  <section id="results" class="block">
-    <h2>Section 2: Results</h2>
-    <p id="output">Enter values and click Calculate.</p>
-  </section>
+    </section>
 
-  <!-- Section 3: Description -->
-  <section id="description" class="block">
-    <h2>Section 3: Detailed Description</h2>
-    <p>
-      This tool estimates fabrication area and weight based on dimensions and material thickness.
-      Extend this section with tables, diagrams, or cost breakdowns to match your workflow.
-    </p>
-  </section>
+    <!-- BLOCK 2 (placeholder for now) -->
+    <section class="block block-results">
+      <h3>Results</h3>
+    </section>
 
-  <script>
-    function calculate() {
-      const length = parseFloat(document.getElementById('length').value);
-      const width = parseFloat(document.getElementById('width').value);
-      const height = parseFloat(document.getElementById('height').value);
-      const thickness = parseFloat(document.getElementById('thickness').value);
+    <!-- BLOCK 3 (placeholder for now) -->
+    <section class="block block-summary">
+      <h3>Summary</h3>
+    </section>
 
-      if (isNaN(length) || isNaN(width) || isNaN(height) || isNaN(thickness)) {
-        document.getElementById('output').innerText = "⚠️ Please enter all values.";
-        return;
-      }
+  </div>
 
-      const area = 2 * (length*width + length*height + width*height) / 92903.04;
-      const weight = area * thickness * 7.85;
-
-      document.getElementById('output').innerText =
-        `Project: ${document.getElementById('projectName').value}\n` +
-        `Customer: ${document.getElementById('customerName').value}\n` +
-        `Total Area: ${area.toFixed(2)} sq.ft\n` +
-        `Estimated Weight: ${weight.toFixed(2)} kg`;
-    }
-  </script>
 </body>
 </html>
