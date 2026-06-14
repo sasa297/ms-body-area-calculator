@@ -6,23 +6,32 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Fabrication Calculator</h1>
-    <p class="subtitle">Project Estimation Tool</p>
-  </header>
-
   <main class="grid-container">
-    <!-- Section 1: User Input -->
+    <!-- Block 1: User Input -->
     <section id="input" class="card">
       <h2>User Input</h2>
       <form id="calcForm">
-        <div class="form-grid">
+        <!-- Project & Customer -->
+        <div class="block">
           <label>Project Name <input type="text" id="projectName"></label>
           <label>Customer Name <input type="text" id="customerName"></label>
+        </div>
+
+        <!-- Overall Dimensions -->
+        <div class="block grid-3">
           <label>Length (mm) <input type="number" id="length"></label>
           <label>Width (mm) <input type="number" id="width"></label>
           <label>Height (mm) <input type="number" id="height"></label>
-          <label>Thickness (mm) <input type="number" id="thickness"></label>
+        </div>
+
+        <!-- Thickness -->
+        <div class="block grid-2">
+          <label>Overall Thickness (mm) <input type="number" id="thickness"></label>
+          <p class="note">Derived from overall thickness (14 AWG)</p>
+        </div>
+
+        <!-- Panel Selection -->
+        <div class="block">
           <label>Type of Panel
             <select id="panelType">
               <option value="single">Single Door</option>
@@ -31,11 +40,19 @@
             </select>
           </label>
         </div>
+
+        <!-- Gland Plate -->
+        <div class="block grid-2">
+          <label>Gland Plate Size (mm) <input type="number" id="glandSize"></label>
+          <label>Gland Plate Thickness (mm) <input type="number" id="glandThickness"></label>
+          <p class="note">Derived from gland plate thickness (14 AWG)</p>
+        </div>
+
         <button type="button" onclick="calculate()">Calculate</button>
       </form>
     </section>
 
-    <!-- Section 2: Results -->
+    <!-- Block 2: Results -->
     <section id="results" class="card">
       <h2>Results</h2>
       <div class="results-box">
@@ -43,20 +60,16 @@
       </div>
     </section>
 
-    <!-- Section 3: Detailed Description -->
+    <!-- Block 3: Description -->
     <section id="description" class="card">
       <h2>Detailed Description</h2>
       <p>
         This tool estimates fabrication area and weight based on dimensions and material thickness. 
-        Results are displayed instantly after calculation. You can extend this section with tables, 
-        diagrams, or cost breakdowns to match your engineering workflow.
+        Results are displayed instantly after calculation. Extend this section with tables, diagrams, 
+        or cost breakdowns to match your engineering workflow.
       </p>
     </section>
   </main>
-
-  <footer>
-    <p>© 2026 Saikiran Test Project</p>
-  </footer>
 
   <script>
     function calculate() {
@@ -70,9 +83,8 @@
         return;
       }
 
-      // Example calculation: surface area of a box (mm² → sq.ft)
       const area = 2 * (length*width + length*height + width*height) / 92903.04;
-      const weight = area * thickness * 7.85; // steel density approx
+      const weight = area * thickness * 7.85;
 
       document.getElementById('output').innerText =
         `📌 Project: ${document.getElementById('projectName').value}\n` +
