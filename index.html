@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>MS Enclosure Area & Weight Calculator</title>
-
+    
+<div class="header">
+    <h1>MS Enclosure Area & Weight Calculator</h1>
+    <p>Sheet Metal Estimation Tool</p>
+</div>
+    
 <style>
 
 body{
@@ -23,8 +28,22 @@ body{
     box-shadow:0px 0px 10px rgba(0,0,0,0.15);
 }
 
-h1{
+.header{
     text-align:center;
+    background:#0f172a;
+    color:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+}
+
+.header h1{
+    margin:0;
+}
+
+.header p{
+    margin-top:5px;
+    opacity:0.8;
 }
 
 .card{
@@ -34,10 +53,21 @@ h1{
     box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
 
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-top:20px;
+}
+
+    
 input{
-    padding:8px;
-    margin:5px;
-    width:120px;
+    width:100%;
+    padding:10px;
+    margin-top:5px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    box-sizing:border-box;
 }
 
 button{
